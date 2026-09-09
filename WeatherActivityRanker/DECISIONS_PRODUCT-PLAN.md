@@ -97,8 +97,8 @@ Signals:
 
 - `snowfall_sum`: positive signal
 - `temperature_2m_min` and `temperature_2m_max`: reward cold but reasonable ski conditions
-- `windspeed_10m_max`: penalize high wind
-- `weathercode`: penalize severe weather
+- `wind_speed_10m_max`: penalize high wind
+- `weather_code`: penalize severe weather
 
 Known limitation:
 
@@ -108,8 +108,8 @@ Open-Meteo Forecast API does not indicate whether a city has ski infrastructure.
 
 Signals:
 
-- `windspeed_10m_max`: proxy signal
-- `winddirection_10m_dominant`: proxy signal if useful
+- `wind_speed_10m_max`: proxy signal
+- `wind_direction_10m_dominant`: proxy signal if useful
 - `precipitation_probability_max`: penalty
 - Temperature: mild bonus only
 
@@ -122,9 +122,9 @@ Real surf quality depends on swell height, swell period, and wave direction. Tho
 Signals:
 
 - `precipitation_probability_max`: penalty
-- `weathercode`: clear or partly cloudy weather is positive; rain, storm, fog, or snow are negative
+- `weather_code`: clear or partly cloudy weather is positive; rain, storm, fog, or snow are negative
 - `temperature_2m_max`: reward comfortable temperatures, roughly 15-28C
-- `windspeed_10m_max`: mild penalty for high wind
+- `wind_speed_10m_max`: mild penalty for high wind
 - `uv_index_max`: slight penalty for very high UV
 
 ### Indoor Sightseeing
@@ -170,6 +170,14 @@ WeatherActivityRanker/
 
 - `geocode(query:)`
 - `forecast(latitude:longitude:)`
+
+Forecast requests should use these daily fields:
+
+```text
+weather_code,temperature_2m_max,temperature_2m_min,snowfall_sum,
+precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,
+wind_direction_10m_dominant,uv_index_max
+```
 
 Use `URLSession`, `URLComponents`, and `Codable`.
 
