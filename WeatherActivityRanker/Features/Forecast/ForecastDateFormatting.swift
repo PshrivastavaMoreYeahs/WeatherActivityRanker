@@ -12,6 +12,10 @@ extension ForecastDay {
         date.formatted(.dateTime.weekday(.abbreviated))
     }
 
+    var listDateText: String {
+        date.formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day())
+    }
+
     var fullDateText: String {
         date.formatted(.dateTime.weekday(.wide).month(.wide).day())
     }

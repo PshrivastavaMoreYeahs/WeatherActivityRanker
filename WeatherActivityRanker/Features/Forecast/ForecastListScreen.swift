@@ -39,7 +39,7 @@ struct ForecastListScreen: View {
             }
             .joined(separator: ", ")
 
-        return "\(day.forecastDay.weekdayText), \(ratings)"
+        return "\(day.forecastDay.listDateText), \(ratings)"
     }
 }
 
@@ -49,7 +49,7 @@ private struct ForecastDayRow: View {
     var body: some View {
         HStack(spacing: 14) {
             VStack(alignment: .leading, spacing: 5) {
-                Text(day.forecastDay.weekdayText)
+                Text(day.forecastDay.listDateText)
                     .font(.headline)
 
                 Text(day.forecastDay.temperatureRangeText)
