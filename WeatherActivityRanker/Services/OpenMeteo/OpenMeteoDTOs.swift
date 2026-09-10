@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct OpenMeteoGeocodingResponseDTO: Decodable, Equatable {
+nonisolated struct OpenMeteoGeocodingResponseDTO: Decodable, Equatable {
     let results: [OpenMeteoCityDTO]?
 }
 
-struct OpenMeteoCityDTO: Decodable, Equatable {
+nonisolated struct OpenMeteoCityDTO: Decodable, Equatable {
     let id: Int
     let name: String
     let latitude: Double
@@ -33,7 +33,7 @@ struct OpenMeteoCityDTO: Decodable, Equatable {
     }
 }
 
-struct OpenMeteoForecastResponseDTO: Decodable, Equatable {
+nonisolated struct OpenMeteoForecastResponseDTO: Decodable, Equatable {
     let timezone: String
     let dailyUnits: OpenMeteoDailyUnitsDTO?
     let daily: OpenMeteoDailyForecastDTO
@@ -45,7 +45,7 @@ struct OpenMeteoForecastResponseDTO: Decodable, Equatable {
     }
 }
 
-struct OpenMeteoDailyForecastDTO: Decodable, Equatable {
+nonisolated struct OpenMeteoDailyForecastDTO: Decodable, Equatable {
     let time: [String]
     let weatherCode: [Int]
     let temperature2mMaximum: [Double]
@@ -75,7 +75,7 @@ struct OpenMeteoDailyForecastDTO: Decodable, Equatable {
     }
 }
 
-struct OpenMeteoDailyUnitsDTO: Decodable, Equatable {
+nonisolated struct OpenMeteoDailyUnitsDTO: Decodable, Equatable {
     let time: String?
     let weatherCode: String?
     let temperature2mMaximum: String?

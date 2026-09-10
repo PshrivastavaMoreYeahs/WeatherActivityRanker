@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OpenMeteoMapper: Sendable {
+nonisolated struct OpenMeteoMapper: Sendable {
     func mapCities(from response: OpenMeteoGeocodingResponseDTO) -> [City] {
         response.results?.map { dto in
             City(
@@ -101,7 +101,7 @@ struct OpenMeteoMapper: Sendable {
     }
 }
 
-enum OpenMeteoMappingError: Error, Equatable {
+nonisolated enum OpenMeteoMappingError: Error, Equatable {
     case invalidDailyDate(String)
     case mismatchedDailyArrayLength(fieldName: String, expectedCount: Int, actualCount: Int)
     case unexpected(String)

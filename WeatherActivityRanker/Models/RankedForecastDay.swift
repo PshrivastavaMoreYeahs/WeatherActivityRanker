@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RankedForecastDay: Identifiable, Equatable, Sendable {
+nonisolated struct RankedForecastDay: Identifiable, Equatable, Sendable {
     var id: Date { forecastDay.id }
 
     let forecastDay: ForecastDay

@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol HTTPClient: Sendable {
+nonisolated protocol HTTPClient: Sendable {
     func data(for request: URLRequest) async throws -> (Data, HTTPURLResponse)
 }
 
-struct URLSessionHTTPClient: HTTPClient {
+nonisolated struct URLSessionHTTPClient: HTTPClient {
     private let session: URLSession
 
     init(session: URLSession = .shared) {
@@ -29,6 +29,6 @@ struct URLSessionHTTPClient: HTTPClient {
     }
 }
 
-enum HTTPClientError: Error, Equatable {
+nonisolated enum HTTPClientError: Error, Equatable {
     case invalidResponse
 }

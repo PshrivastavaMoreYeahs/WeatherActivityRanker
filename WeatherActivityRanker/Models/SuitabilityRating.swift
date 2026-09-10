@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SuitabilityRating: String, Equatable, Sendable {
+nonisolated enum SuitabilityRating: String, Equatable, Sendable {
     case poor = "Poor"
     case fair = "Fair"
     case good = "Good"

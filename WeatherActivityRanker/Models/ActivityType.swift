@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ActivityType: String, CaseIterable, Identifiable, Sendable {
+nonisolated enum ActivityType: String, CaseIterable, Identifiable, Sendable {
     case skiing
     case surfing
     case outdoorSightseeing

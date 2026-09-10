@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OpenMeteoEndpoint {
+nonisolated enum OpenMeteoEndpoint {
     case geocoding(query: String)
     case forecast(latitude: Double, longitude: Double)
 

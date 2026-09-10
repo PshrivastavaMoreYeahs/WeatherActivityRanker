@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct City: Identifiable, Equatable, Sendable {
+nonisolated struct City: Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
     let latitude: Double
@@ -19,14 +19,10 @@ struct City: Identifiable, Equatable, Sendable {
 
     var displayName: String {
         [name, region, country]
-            .compactMap { $0?.nilIfBlank }
+            .compactMap { value in
+                let trimmedValue = value?.trimmingCharacters(in: .whitespacesAndNewlines)
+                return trimmedValue?.isEmpty == false ? trimmedValue : nil
+            }
             .joined(separator: ", ")
-    }
-}
-
-private extension String {
-    var nilIfBlank: String? {
-        let trimmedValue = trimmingCharacters(in: .whitespacesAndNewlines)
-        return trimmedValue.isEmpty ? nil : trimmedValue
     }
 }

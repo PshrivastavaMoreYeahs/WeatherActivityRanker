@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ActivitySuitability: Identifiable, Equatable, Sendable {
+nonisolated struct ActivitySuitability: Identifiable, Equatable, Sendable {
     var id: ActivityType { activity }
 
     let activity: ActivityType

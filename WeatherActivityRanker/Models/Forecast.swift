@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Forecast: Equatable, Sendable {
+nonisolated struct Forecast: Equatable, Sendable {
     let city: City
     let timezone: String
     let days: [ForecastDay]

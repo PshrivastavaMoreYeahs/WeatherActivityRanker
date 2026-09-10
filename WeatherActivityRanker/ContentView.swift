@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel: SearchViewModel
+
+    init() {
+        _viewModel = StateObject(wrappedValue: SearchViewModel())
+    }
+
+    init(viewModel: SearchViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            SearchScreen(viewModel: viewModel)
         }
-        .padding()
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ForecastDay: Identifiable, Equatable, Sendable {
+nonisolated struct ForecastDay: Identifiable, Equatable, Sendable {
     var id: Date { date }
 
     let date: Date
@@ -24,12 +24,6 @@ struct ForecastDay: Identifiable, Equatable, Sendable {
     let uvIndexMaximum: Double?
 
     var temperatureRangeText: String {
-        "\(temperatureMinimum.roundedTemperatureText)-\(temperatureMaximum.roundedTemperatureText) C"
-    }
-}
-
-private extension Double {
-    var roundedTemperatureText: String {
-        String(format: "%.0f", self)
+        "\(String(format: "%.0f", temperatureMinimum))-\(String(format: "%.0f", temperatureMaximum)) C"
     }
 }

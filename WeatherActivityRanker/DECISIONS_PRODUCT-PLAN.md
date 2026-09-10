@@ -237,6 +237,10 @@ Initial app flow:
 3. Forecast ranking screen for selected city.
 4. 7-day list with activity scores and labels.
 
+**Decision:** Use a separate day detail screen instead of in-place expansion.
+
+**Reason:** The forecast list remains easy to scan across all 7 days, while the detail screen gives each activity enough space for score, label, and rationale on smaller devices.
+
 For each day, show:
 
 - Date

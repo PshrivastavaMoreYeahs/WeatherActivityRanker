@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OpenMeteoRepositoryError: LocalizedError, Equatable {
+nonisolated enum OpenMeteoRepositoryError: LocalizedError, Equatable {
     case emptyQuery
     case invalidURL
     case invalidResponse

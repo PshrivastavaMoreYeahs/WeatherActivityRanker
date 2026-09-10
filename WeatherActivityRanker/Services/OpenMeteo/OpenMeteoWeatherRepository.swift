@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class OpenMeteoWeatherRepository: WeatherRepository {
+nonisolated final class OpenMeteoWeatherRepository: WeatherRepository {
     private let httpClient: HTTPClient
     private let decoder: JSONDecoder
     private let mapper: OpenMeteoMapper
