@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C1C916AE-254F-44B4-A30A-8B467F2D1217"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D27C7EBF-873E-40D8-834E-E87F56DEB9D2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherActivityRanker/Services/OpenMeteo/OpenMeteoWeatherRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "request(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D27C7EBF-873E-40D8-834E-E87F56DEB9D2 - dcacfd9017bbcb5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for WeatherActivityRanker.OpenMeteoWeatherRepository.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(WeatherActivityRanker.OpenMeteoEndpoint) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "WeatherActivityRanker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshrivastava/Documents/CollisionGroup/WeatherActivityRanker/WeatherActivityRanker/Services/OpenMeteo/OpenMeteoWeatherRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+               <Location
+                  uuid = "D27C7EBF-873E-40D8-834E-E87F56DEB9D2 - 59aa6fcb6cb6891c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for WeatherActivityRanker.OpenMeteoWeatherRepository.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(WeatherActivityRanker.OpenMeteoEndpoint) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "WeatherActivityRanker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshrivastava/Documents/CollisionGroup/WeatherActivityRanker/WeatherActivityRanker/Services/OpenMeteo/OpenMeteoWeatherRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+               <Location
+                  uuid = "D27C7EBF-873E-40D8-834E-E87F56DEB9D2 - 63dc20d6785f6f4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for WeatherActivityRanker.OpenMeteoWeatherRepository.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(WeatherActivityRanker.OpenMeteoEndpoint) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "WeatherActivityRanker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshrivastava/Documents/CollisionGroup/WeatherActivityRanker/WeatherActivityRanker/Services/OpenMeteo/OpenMeteoWeatherRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+               <Location
+                  uuid = "D27C7EBF-873E-40D8-834E-E87F56DEB9D2 - 3c85b1b756acdd47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for WeatherActivityRanker.OpenMeteoWeatherRepository.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(WeatherActivityRanker.OpenMeteoEndpoint) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "WeatherActivityRanker.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshrivastava/Documents/CollisionGroup/WeatherActivityRanker/WeatherActivityRanker/Services/OpenMeteo/OpenMeteoWeatherRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

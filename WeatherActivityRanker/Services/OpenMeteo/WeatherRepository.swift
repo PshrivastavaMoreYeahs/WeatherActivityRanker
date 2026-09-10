@@ -10,5 +10,4 @@ import Foundation
 nonisolated protocol WeatherRepository: Sendable {
     func searchCities(query: String) async throws -> [City]
     func forecast(for city: City) async throws -> Forecast
-    func activityAvailability(for city: City) async -> ActivityAvailabilitySet
 }

@@ -10,7 +10,6 @@ import Foundation
 nonisolated enum OpenMeteoEndpoint {
     case geocoding(query: String)
     case forecast(latitude: Double, longitude: Double)
-    case marine(latitude: Double, longitude: Double)
 
     var url: URL? {
         var components = URLComponents()
@@ -27,8 +26,6 @@ nonisolated enum OpenMeteoEndpoint {
             return "geocoding-api.open-meteo.com"
         case .forecast:
             return "api.open-meteo.com"
-        case .marine:
-            return "marine-api.open-meteo.com"
         }
     }
 
@@ -38,8 +35,6 @@ nonisolated enum OpenMeteoEndpoint {
             return "/v1/search"
         case .forecast:
             return "/v1/forecast"
-        case .marine:
-            return "/v1/marine"
         }
     }
 
@@ -65,15 +60,6 @@ nonisolated enum OpenMeteoEndpoint {
                 URLQueryItem(name: "precipitation_unit", value: "mm")
             ]
 
-        case let .marine(latitude, longitude):
-            return [
-                URLQueryItem(name: "latitude", value: String(latitude)),
-                URLQueryItem(name: "longitude", value: String(longitude)),
-                URLQueryItem(name: "daily", value: "wave_height_max"),
-                URLQueryItem(name: "forecast_days", value: "1"),
-                URLQueryItem(name: "cell_selection", value: "sea"),
-                URLQueryItem(name: "timezone", value: "auto")
-            ]
         }
     }
 

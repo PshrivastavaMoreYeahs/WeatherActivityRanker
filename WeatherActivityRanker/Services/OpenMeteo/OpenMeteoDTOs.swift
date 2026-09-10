@@ -35,11 +35,6 @@ nonisolated struct OpenMeteoCityDTO: Decodable, Equatable {
     }
 }
 
-nonisolated struct OpenMeteoMarineResponseDTO: Decodable, Equatable {
-    let latitude: Double
-    let longitude: Double
-}
-
 nonisolated struct OpenMeteoForecastResponseDTO: Decodable, Equatable {
     let timezone: String
     let dailyUnits: OpenMeteoDailyUnitsDTO?

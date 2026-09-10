@@ -8,5 +8,5 @@
 import Foundation
 
 nonisolated protocol SuitabilityScoring: Sendable {
-    func rankedForecast(from forecast: Forecast, availability: ActivityAvailabilitySet) -> RankedForecast
+    func rankedForecast(from forecast: Forecast) -> RankedForecast
 }

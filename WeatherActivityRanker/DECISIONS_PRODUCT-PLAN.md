@@ -106,7 +106,7 @@ Open-Meteo Forecast API does not indicate whether a city has ski infrastructure.
 
 Availability:
 
-Use the elevation returned by Open-Meteo Geocoding as a first-pass mountain-terrain proxy. If elevation is below roughly 800 m, mark Skiing unavailable and grey it out in the UI. If elevation is missing, keep Skiing available rather than making an unsupported negative claim.
+Do not mark Skiing unavailable in v1. Open-Meteo geocoding elevation is not enough to prove nearby ski terrain or ski infrastructure, so the app keeps Skiing scoreable and treats the score as a weather suitability proxy.
 
 ### Surfing
 
@@ -119,11 +119,11 @@ Signals:
 
 Known limitation:
 
-Real surf quality depends on swell height, swell period, and wave direction. Surfing score remains a weather-based proxy, not a true surf forecast. Marine data is used only as a lightweight coastal availability check in v1.
+Real surf quality depends on swell height, swell period, wave direction, and access to a surfable coastline. Surfing score remains a weather-based proxy, not a true surf forecast.
 
 Availability:
 
-Use Open-Meteo Marine API as a lightweight geography check. Request a sea grid cell near the selected city and compare its returned coordinate with the city coordinate. If the nearest sea grid cell is more than roughly 75 km away, mark Surfing unavailable and grey it out in the UI. If the marine check fails, keep Surfing available rather than blocking the forecast experience.
+Do not mark Surfing unavailable in v1. Open-Meteo Forecast and Geocoding APIs do not reliably answer whether a selected city has sea/ocean access, and a naive Marine API nearest-grid check can produce false results for normal city searches.
 
 ### Outdoor Sightseeing
 
@@ -298,7 +298,7 @@ Cover:
 
 ## 8. Known Limitations
 
-- Surf score is only a weather-based proxy because Marine Weather API is not included in v1.
+- Surf score is only a weather-based proxy and does not verify sea/ocean access.
 - Ski score does not know whether ski slopes or resorts exist near the searched location.
 - Metric units only.
 - No offline cache.
@@ -309,7 +309,8 @@ Cover:
 
 Potential improvements after v1:
 
-- Add Open-Meteo Marine Weather API for real surf scoring.
+- Add Open-Meteo Marine Weather API for real surf scoring where the searched location is coastal.
+- Add a reliable terrain/resort data source before greying out Skiing availability.
 - Add lightweight local caching for last successful forecasts.
 - Add recent searches or favorites.
 - Add metric/imperial unit toggle.

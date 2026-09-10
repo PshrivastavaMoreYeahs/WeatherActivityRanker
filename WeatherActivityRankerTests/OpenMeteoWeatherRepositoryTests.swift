@@ -134,55 +134,6 @@ final class OpenMeteoWeatherRepositoryTests: XCTestCase {
         }
     }
 
-    func testActivityAvailability_greysOutSkiingWhenElevationIsLowAndSurfingWhenSeaIsFarAway() async {
-        let httpClient = MockHTTPClient(
-            result: .success(
-                (
-                    makeHTTPResponse(statusCode: 200),
-                    #"{"latitude": 51.0, "longitude": 1.5}"#.data(using: .utf8)!
-                )
-            )
-        )
-        let repository = OpenMeteoWeatherRepository(httpClient: httpClient)
-
-        let availability = await repository.activityAvailability(for: makeCity())
-
-        XCTAssertFalse(availability.skiing.isAvailable)
-        XCTAssertEqual(availability.skiing.reason, "No mountain terrain indicated near this city.")
-        XCTAssertFalse(availability.surfing.isAvailable)
-        XCTAssertEqual(availability.surfing.reason, "No sea or ocean within roughly 75 km of this location.")
-        XCTAssertEqual(httpClient.lastRequest?.url?.host, "marine-api.open-meteo.com")
-        XCTAssertEqual(queryValue("cell_selection", in: httpClient.lastRequest), "sea")
-    }
-
-    func testActivityAvailability_keepsSkiingAvailableForHighElevationAndSurfingForNearbySea() async {
-        let httpClient = MockHTTPClient(
-            result: .success(
-                (
-                    makeHTTPResponse(statusCode: 200),
-                    #"{"latitude": 46.205, "longitude": 6.14}"#.data(using: .utf8)!
-                )
-            )
-        )
-        let repository = OpenMeteoWeatherRepository(httpClient: httpClient)
-        let city = City(
-            id: 1,
-            name: "Mountain Coast",
-            latitude: 46.2,
-            longitude: 6.15,
-            elevation: 1_100,
-            region: nil,
-            countryCode: "CH",
-            country: "Switzerland",
-            timezone: "Europe/Zurich"
-        )
-
-        let availability = await repository.activityAvailability(for: city)
-
-        XCTAssertTrue(availability.skiing.isAvailable)
-        XCTAssertTrue(availability.surfing.isAvailable)
-    }
-
     private func makeCity() -> City {
         City(
             id: 2643743,

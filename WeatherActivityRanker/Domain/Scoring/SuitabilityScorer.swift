@@ -8,7 +8,7 @@
 import Foundation
 
 nonisolated struct SuitabilityScorer: SuitabilityScoring {
-    func rankedForecast(from forecast: Forecast, availability: ActivityAvailabilitySet = .allAvailable) -> RankedForecast {
+    func rankedForecast(from forecast: Forecast) -> RankedForecast {
         RankedForecast(
             city: forecast.city,
             timezone: forecast.timezone,
@@ -16,24 +16,14 @@ nonisolated struct SuitabilityScorer: SuitabilityScoring {
                 RankedForecastDay(
                     forecastDay: day,
                     activitySuitabilities: ActivityType.allCases.map {
-                        score($0, for: day, availability: availability.availability(for: $0))
+                        score($0, for: day)
                     }
                 )
             }
         )
     }
 
-    private func score(_ activity: ActivityType, for day: ForecastDay, availability: ActivityAvailability) -> ActivitySuitability {
-        guard availability.isAvailable else {
-            return ActivitySuitability(
-                activity: activity,
-                score: 0,
-                rating: .poor,
-                rationale: availability.reason ?? "This activity is not available for the selected location.",
-                availability: availability
-            )
-        }
-
+    private func score(_ activity: ActivityType, for day: ForecastDay) -> ActivitySuitability {
         switch activity {
         case .skiing:
             return skiingScore(for: day)
