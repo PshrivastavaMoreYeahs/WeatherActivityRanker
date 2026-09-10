@@ -32,7 +32,11 @@ struct ForecastListScreen: View {
 
     private func accessibilityLabel(for day: RankedForecastDay) -> String {
         let ratings = day.activitySuitabilities
-            .map { "\($0.activity.displayName): \($0.rating.rawValue)" }
+            .map {
+                $0.availability.isAvailable
+                    ? "\($0.activity.displayName): \($0.rating.rawValue)"
+                    : "\($0.activity.displayName): unavailable"
+            }
             .joined(separator: ", ")
 
         return "\(day.forecastDay.weekdayText), \(ratings)"

@@ -12,6 +12,7 @@ nonisolated struct City: Identifiable, Equatable, Sendable {
     let name: String
     let latitude: Double
     let longitude: Double
+    let elevation: Double?
     let region: String?
     let countryCode: String
     let country: String

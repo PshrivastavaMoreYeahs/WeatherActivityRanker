@@ -15,6 +15,7 @@ nonisolated struct OpenMeteoMapper: Sendable {
                 name: dto.name,
                 latitude: dto.latitude,
                 longitude: dto.longitude,
+                elevation: dto.elevation,
                 region: dto.admin1,
                 countryCode: dto.countryCode,
                 country: dto.country,

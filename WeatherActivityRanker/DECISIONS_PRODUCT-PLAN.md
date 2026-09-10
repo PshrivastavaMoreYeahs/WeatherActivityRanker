@@ -104,6 +104,10 @@ Known limitation:
 
 Open-Meteo Forecast API does not indicate whether a city has ski infrastructure. Skiing score means "conditions would be suitable if skiing were available nearby," not "this city is a ski destination."
 
+Availability:
+
+Use the elevation returned by Open-Meteo Geocoding as a first-pass mountain-terrain proxy. If elevation is below roughly 800 m, mark Skiing unavailable and grey it out in the UI. If elevation is missing, keep Skiing available rather than making an unsupported negative claim.
+
 ### Surfing
 
 Signals:
@@ -115,7 +119,11 @@ Signals:
 
 Known limitation:
 
-Real surf quality depends on swell height, swell period, and wave direction. Those require Open-Meteo's Marine Weather API, which is outside the initial API scope. Surfing score will be a weather-based proxy, not a true surf forecast.
+Real surf quality depends on swell height, swell period, and wave direction. Surfing score remains a weather-based proxy, not a true surf forecast. Marine data is used only as a lightweight coastal availability check in v1.
+
+Availability:
+
+Use Open-Meteo Marine API as a lightweight geography check. Request a sea grid cell near the selected city and compare its returned coordinate with the city coordinate. If the nearest sea grid cell is more than roughly 75 km away, mark Surfing unavailable and grey it out in the UI. If the marine check fails, keep Surfing available rather than blocking the forecast experience.
 
 ### Outdoor Sightseeing
 

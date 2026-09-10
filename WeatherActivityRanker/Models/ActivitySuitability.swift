@@ -14,4 +14,5 @@ nonisolated struct ActivitySuitability: Identifiable, Equatable, Sendable {
     let score: Int
     let rating: SuitabilityRating
     let rationale: String
+    let availability: ActivityAvailability
 }

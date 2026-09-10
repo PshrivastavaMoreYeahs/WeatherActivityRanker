@@ -53,8 +53,14 @@ final class SearchViewModel: ObservableObject {
 
         Task {
             do {
-                let forecast = try await weatherRepository.forecast(for: city)
-                let rankedForecast = suitabilityScorer.rankedForecast(from: forecast)
+                async let forecast = weatherRepository.forecast(for: city)
+                async let availability = weatherRepository.activityAvailability(for: city)
+                let loadedForecast = try await forecast
+                let loadedAvailability = await availability
+                let rankedForecast = suitabilityScorer.rankedForecast(
+                    from: loadedForecast,
+                    availability: loadedAvailability
+                )
                 forecastState = .loaded(rankedForecast)
                 isShowingForecast = true
             } catch {

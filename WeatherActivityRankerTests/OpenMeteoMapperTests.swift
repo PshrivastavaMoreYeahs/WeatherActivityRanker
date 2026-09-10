@@ -19,6 +19,7 @@ final class OpenMeteoMapperTests: XCTestCase {
                     name: "London",
                     latitude: 51.5085,
                     longitude: -0.1257,
+                    elevation: 25,
                     admin1: "England",
                     countryCode: "GB",
                     country: "United Kingdom",
@@ -32,6 +33,7 @@ final class OpenMeteoMapperTests: XCTestCase {
         XCTAssertEqual(cities.count, 1)
         XCTAssertEqual(cities.first?.displayName, "London, England, United Kingdom")
         XCTAssertEqual(cities.first?.countryCode, "GB")
+        XCTAssertEqual(cities.first?.elevation, 25)
     }
 
     func testMapForecast_mapsDailyParallelArraysToForecastDays() throws {
@@ -125,6 +127,7 @@ final class OpenMeteoMapperTests: XCTestCase {
             name: "London",
             latitude: 51.5085,
             longitude: -0.1257,
+            elevation: 25,
             region: "England",
             countryCode: "GB",
             country: "United Kingdom",

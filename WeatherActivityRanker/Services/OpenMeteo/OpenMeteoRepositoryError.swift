@@ -30,7 +30,7 @@ nonisolated enum OpenMeteoRepositoryError: LocalizedError, Equatable {
         case .decodingFailed:
             return "The weather response could not be read."
         case let .mappingFailed(error):
-            return "The weather response was incomplete or inconsistent. \(error.localizedDescription)"
+            return "The weather response was incomplete or inconsistent. \(String(describing: error))"
         case .networkFailed:
             return "The weather service could not be reached. Check your connection and try again."
         case .emptySearchResults:

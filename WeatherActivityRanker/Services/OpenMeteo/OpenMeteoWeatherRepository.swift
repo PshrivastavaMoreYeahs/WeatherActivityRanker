@@ -56,6 +56,17 @@ nonisolated final class OpenMeteoWeatherRepository: WeatherRepository {
         }
     }
 
+    func activityAvailability(for city: City) async -> ActivityAvailabilitySet {
+        async let surfing = surfingAvailability(for: city)
+
+        return await ActivityAvailabilitySet(
+            skiing: skiingAvailability(for: city),
+            surfing: surfing,
+            outdoorSightseeing: .available,
+            indoorSightseeing: .available
+        )
+    }
+
     private func request<Response: Decodable>(_ endpoint: OpenMeteoEndpoint) async throws -> Response {
         guard let url = endpoint.url else {
             throw OpenMeteoRepositoryError.invalidURL
@@ -87,6 +98,40 @@ nonisolated final class OpenMeteoWeatherRepository: WeatherRepository {
             return try decoder.decode(Response.self, from: data)
         } catch {
             throw OpenMeteoRepositoryError.decodingFailed(error.localizedDescription)
+        }
+    }
+
+    private func skiingAvailability(for city: City) -> ActivityAvailability {
+        guard let elevation = city.elevation else {
+            return .available
+        }
+
+        guard elevation >= 800 else {
+            return .unavailable(reason: "No mountain terrain indicated near this city.")
+        }
+
+        return .available
+    }
+
+    private func surfingAvailability(for city: City) async -> ActivityAvailability {
+        do {
+            let marineResponse: OpenMeteoMarineResponseDTO = try await request(
+                OpenMeteoEndpoint.marine(latitude: city.latitude, longitude: city.longitude)
+            )
+            let distanceToSea = GeoDistance.kilometersBetween(
+                latitude: city.latitude,
+                longitude: city.longitude,
+                andLatitude: marineResponse.latitude,
+                longitude: marineResponse.longitude
+            )
+
+            guard distanceToSea <= 75 else {
+                return .unavailable(reason: "No sea or ocean within roughly 75 km of this location.")
+            }
+
+            return .available
+        } catch {
+            return .available
         }
     }
 }

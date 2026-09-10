@@ -53,9 +53,9 @@ private struct ActivityDetailCard: View {
                     .font(.title3.weight(.semibold))
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("\(suitability.activity.displayName) · \(suitability.rating.rawValue)")
+                    Text(titleText)
                         .font(.headline)
-                    Text("\(suitability.score)/100")
+                    Text(suitability.availability.isAvailable ? "\(suitability.score)/100" : "Unavailable")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
                 }
@@ -65,11 +65,31 @@ private struct ActivityDetailCard: View {
                 .font(.subheadline)
                 .foregroundStyle(.primary)
         }
-        .foregroundStyle(suitability.rating.foregroundColor)
+        .foregroundStyle(suitability.availability.isAvailable ? suitability.rating.foregroundColor : .secondary)
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(suitability.rating.backgroundColor, in: RoundedRectangle(cornerRadius: 8))
+        .background(
+            suitability.availability.isAvailable ? suitability.rating.backgroundColor : Color.gray.opacity(0.16),
+            in: RoundedRectangle(cornerRadius: 8)
+        )
+        .opacity(suitability.availability.isAvailable ? 1 : 0.75)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(suitability.activity.displayName): \(suitability.rating.rawValue), score \(suitability.score) out of 100. \(suitability.rationale)")
+        .accessibilityLabel(accessibilityLabel)
+    }
+
+    private var accessibilityLabel: String {
+        guard suitability.availability.isAvailable else {
+            return "\(suitability.activity.displayName): unavailable. \(suitability.rationale)"
+        }
+
+        return "\(suitability.activity.displayName): \(suitability.rating.rawValue), score \(suitability.score) out of 100. \(suitability.rationale)"
+    }
+
+    private var titleText: String {
+        guard suitability.availability.isAvailable else {
+            return "\(suitability.activity.displayName) · Unavailable"
+        }
+
+        return "\(suitability.activity.displayName) · \(suitability.rating.rawValue)"
     }
 }

@@ -16,14 +16,26 @@ struct ActivityBadge: View {
                 .font(.caption.weight(.bold))
                 .imageScale(.small)
 
-            Text("\(suitability.score)")
+            Text(suitability.availability.isAvailable ? "\(suitability.score)" : "--")
                 .font(.caption2.weight(.bold))
                 .monospacedDigit()
         }
-        .foregroundStyle(suitability.rating.foregroundColor)
+        .foregroundStyle(suitability.availability.isAvailable ? suitability.rating.foregroundColor : .secondary)
         .frame(width: 44, height: 44)
-        .background(suitability.rating.backgroundColor, in: RoundedRectangle(cornerRadius: 8))
+        .background(
+            suitability.availability.isAvailable ? suitability.rating.backgroundColor : Color.gray.opacity(0.16),
+            in: RoundedRectangle(cornerRadius: 8)
+        )
+        .opacity(suitability.availability.isAvailable ? 1 : 0.55)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(suitability.activity.displayName): \(suitability.rating.rawValue), score \(suitability.score)")
+        .accessibilityLabel(accessibilityLabel)
+    }
+
+    private var accessibilityLabel: String {
+        guard suitability.availability.isAvailable else {
+            return "\(suitability.activity.displayName): unavailable. \(suitability.rationale)"
+        }
+
+        return "\(suitability.activity.displayName): \(suitability.rating.rawValue), score \(suitability.score)"
     }
 }

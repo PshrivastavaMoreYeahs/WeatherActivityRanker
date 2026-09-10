@@ -40,3 +40,13 @@ extension SuitabilityRating {
         foregroundColor.opacity(0.16)
     }
 }
+
+extension ActivityAvailability {
+    var foregroundColor: Color {
+        isAvailable ? .primary : .secondary
+    }
+
+    var backgroundColor: Color {
+        isAvailable ? Color.clear : Color.gray.opacity(0.16)
+    }
+}

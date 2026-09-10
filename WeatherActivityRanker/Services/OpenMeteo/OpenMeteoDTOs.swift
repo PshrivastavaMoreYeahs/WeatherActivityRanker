@@ -16,6 +16,7 @@ nonisolated struct OpenMeteoCityDTO: Decodable, Equatable {
     let name: String
     let latitude: Double
     let longitude: Double
+    let elevation: Double?
     let admin1: String?
     let countryCode: String
     let country: String
@@ -26,11 +27,17 @@ nonisolated struct OpenMeteoCityDTO: Decodable, Equatable {
         case name
         case latitude
         case longitude
+        case elevation
         case admin1
         case countryCode = "country_code"
         case country
         case timezone
     }
+}
+
+nonisolated struct OpenMeteoMarineResponseDTO: Decodable, Equatable {
+    let latitude: Double
+    let longitude: Double
 }
 
 nonisolated struct OpenMeteoForecastResponseDTO: Decodable, Equatable {
